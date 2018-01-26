@@ -58,6 +58,8 @@ class freeradius (
     "${freeradius::fr_basepath}/users.d",
     "${freeradius::fr_basepath}/policy.d",
     "${freeradius::fr_basepath}/dictionary.d",
+    "${freeradius::fr_basepath}/sites-available",
+    "${freeradius::fr_basepath}/mods-available",
     "${freeradius::fr_basepath}/scripts",
   ]:
     ensure  => directory,
