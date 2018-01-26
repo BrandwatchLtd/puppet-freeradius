@@ -98,7 +98,6 @@ class freeradius (
       'chap',
       'detail',
       'detail.log',
-      'dhcp',
       'digest',
       'dynamic_clients',
       'echo',
