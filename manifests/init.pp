@@ -372,6 +372,7 @@ class freeradius (
   exec { 'dh':
     command => "openssl dhparam -out ${freeradius::fr_basepath}/certs/dh 1024",
     creates => "${freeradius::fr_basepath}/certs/dh",
+    require => File[$freeradius::fr_basepath],
     path    => '/usr/bin',
   }
 
@@ -379,6 +380,7 @@ class freeradius (
   exec { 'random':
     command => "dd if=/dev/urandom of=${freeradius::fr_basepath}/certs/random count=10 >/dev/null 2>&1",
     creates => "${freeradius::fr_basepath}/certs/random",
+    require => File[$freeradius::fr_basepath],
     path    => '/bin',
   }
 
