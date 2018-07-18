@@ -32,6 +32,7 @@ class freeradius (
   $fr_daemon_group   = $freeradius::params::fr_group,
   $fr_wbpriv_user    = $freeradius::params::fr_wbpriv_user,
   $fr_wpa_supplicant = $freeradius::params::fr_wpa_supplicant,
+  $fr_modconfigdir   = $freeradius::params::fr_modconfigdir,
 ) inherits freeradius::params {
 
   if $fr_version !~ /^3/ {
@@ -232,14 +233,14 @@ class freeradius (
   }
 
   # Install a huntgroups file
-  concat { "${fr_basepath}/mods-config/preprocess/huntgroups":
+  concat { "${fr_basepath}/${fr_modconfigdir}/preprocess/huntgroups":
     owner   => 'root',
     group   => $fr_group,
     mode    => '0640',
     require => [Package[$fr_package], Group[$fr_group]],
   }
   concat::fragment { 'huntgroups_header':
-    target => "${fr_basepath}/mods-config/preprocess/huntgroups",
+    target => "${fr_basepath}/${fr_modconfigdir}/preprocess/huntgroups",
     source => 'puppet:///modules/freeradius/huntgroups.header',
     order  => 10,
   }

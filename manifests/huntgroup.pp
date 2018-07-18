@@ -7,6 +7,7 @@ define freeradius::huntgroup (
 ) {
   $fr_basepath = $::freeradius::params::fr_basepath
   $fr_service  = $::freeradius::params::fr_service
+  $fr_modconfigdir  = $::freeradius::params::fr_modconfigdir
 
   $conditionals = join($conditions, ', ')
 
@@ -14,7 +15,7 @@ define freeradius::huntgroup (
 
   concat::fragment { "huntgroup.${title}":
     ensure  => $ensure,
-    target  => "${fr_basepath}/mods-config/preprocess/huntgroups",
+    target  => "${fr_basepath}/${fr_modconfigdir}/preprocess/huntgroups",
     content => $content,
     order   => $order,
     notify  => Service[$fr_service],

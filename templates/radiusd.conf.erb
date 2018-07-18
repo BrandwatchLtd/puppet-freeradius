@@ -65,7 +65,7 @@ name = <%= @fr_service %>
 
 #  Location of config and logfiles.
 confdir = ${raddbdir}
-modconfdir = ${confdir}/mods-config
+modconfdir = ${confdir}/<%= @fr_modconfigdir %>
 certdir = ${confdir}/certs
 cadir   = ${confdir}/certs
 run_dir = ${localstatedir}/run/${name}
