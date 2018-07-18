@@ -435,8 +435,8 @@ security {
 	#  member.  This can allow for some finer-grained access
 	#  controls.
 	#
-	user = <%= @fr_user%>
-	group = <%= @fr_group%>
+	user = <%= @fr_daemon_user%>
+	group = <%= @fr_daemon_group%>
 
 	#  Core dumps are a bad thing.  This should only be set to
 	#  'yes' if you're debugging a problem with the server.
